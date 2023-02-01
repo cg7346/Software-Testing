@@ -27,9 +27,51 @@ public class InventoryTest extends TestCase{
         super.setUp();
 	}
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-    
+    @Test
+    public void testgetChocolate() {
+        assertEquals(inv.getChocolate(), 15);
+    }
+
+    @Test
+    public void testaddChocolate0() {
+        try {
+            inv.addChocolate("0");
+        } catch (InventoryException ex) {
+            fail("Should parse int");
+        };
+        assertEquals(inv.getChocolate(), 15);
+    }
+
+    @Test
+    public void testaddChocolateInvalid() {
+        try {
+            inv.addChocolate("abc");
+        } catch (InventoryException ex) {
+            assertEquals(ex.getMessage(), "Units of chocolate must be a positive integer");
+            return;
+        };
+        fail("Should not parse invalid input");
+    }
+
+    @Test
+    public void testenoughIngredientsYes() {
+        try {
+            r.setAmtChocolate("15");
+        } catch (RecipeException ex) {
+            fail("Should parse int");
+        };
+        assertTrue(inv.enoughIngredients(r));
+    }
+
+    @Test
+    public void testenoughIngredientsChocolateNo() {
+        try {
+            r.setAmtChocolate("16");
+        } catch (RecipeException ex) {
+            fail("Should parse int");
+        };
+        assertFalse(inv.enoughIngredients(r));
+    }
+
+
 }

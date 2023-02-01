@@ -6,3 +6,5 @@ target/my-app-1.0-SNAPSHOT.jar
 cov.xml
 .project
 pom.xml
+/.idea/
+/target/
