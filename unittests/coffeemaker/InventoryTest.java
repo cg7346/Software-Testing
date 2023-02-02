@@ -39,6 +39,12 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
+    public void testsetChocolateNeg() {
+        inv.setChocolate(-10);
+        assertEquals(inv.getChocolate(), 15);
+    }
+
+    @Test
     public void testaddChocolate0() {
         try {
             inv.addChocolate("0");
@@ -46,6 +52,16 @@ public class InventoryTest extends TestCase{
             fail("Should parse int");
         };
         assertEquals(inv.getChocolate(), 15);
+    }
+
+    @Test
+    public void testaddChocolate5() {
+        try {
+            inv.addChocolate("5");
+        } catch (InventoryException ex) {
+            fail("Should parse int");
+        };
+        assertEquals(inv.getChocolate(), 20);
     }
 
     @Test
@@ -71,6 +87,17 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
+    public void testaddChocolate0Dec() {
+        try {
+            inv.addChocolate("0.0");
+        } catch (InventoryException ex) {
+            assertEquals(ex.getMessage(), "Units of chocolate must be a positive integer");
+            return;
+        };
+        fail("Should not parse invalid input");
+    }
+
+    @Test
     public void testGetCoffee() {
         assertEquals(inv.getCoffee(), 15);
     }
@@ -82,6 +109,12 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
+    public void testsetCoffeeNeg() {
+        inv.setCoffee(-10);
+        assertEquals(inv.getCoffee(), 15);
+    }
+
+    @Test
     public void testaddCoffee0() {
         try {
             inv.addCoffee("0");
@@ -89,6 +122,16 @@ public class InventoryTest extends TestCase{
             fail("Should parse int");
         };
         assertEquals(inv.getCoffee(), 15);
+    }
+
+    @Test
+    public void testaddCoffee5() {
+        try {
+            inv.addCoffee("5");
+        } catch (InventoryException ex) {
+            fail("Should parse int");
+        };
+        assertEquals(inv.getCoffee(), 20);
     }
 
     @Test
@@ -114,6 +157,17 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
+    public void testaddCoffee0Dec() {
+        try {
+            inv.addCoffee("0.0");
+        } catch (InventoryException ex) {
+            assertEquals(ex.getMessage(), "Units of coffee must be a positive integer");
+            return;
+        };
+        fail("Should not parse invalid input");
+    }
+
+    @Test
     public void testGetSugar() {
         assertEquals(inv.getSugar(), 15);
     }
@@ -125,6 +179,12 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
+    public void testsetSugarNeg() {
+        inv.setSugar(-10);
+        assertEquals(inv.getSugar(), 15);
+    }
+
+    @Test
     public void testaddSugar0() {
         try {
             inv.addSugar("0");
@@ -132,6 +192,16 @@ public class InventoryTest extends TestCase{
             fail("Should parse int");
         };
         assertEquals(inv.getSugar(), 15);
+    }
+
+        @Test
+    public void testaddSugar5() {
+        try {
+            inv.addSugar("5");
+        } catch (InventoryException ex) {
+            fail("Should parse int");
+        };
+        assertEquals(inv.getSugar(), 20);
     }
 
     @Test
@@ -157,6 +227,17 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
+    public void testaddSugar0Dec() {
+        try {
+            inv.addSugar("0.0");
+        } catch (InventoryException ex) {
+            assertEquals(ex.getMessage(), "Units of sugar must be a positive integer");
+            return;
+        };
+        fail("Should not parse invalid input");
+    }
+
+    @Test
     public void testGetMilk() {
         assertEquals(inv.getMilk(), 15);
     }
@@ -168,6 +249,12 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
+    public void testsetMilkNeg() {
+        inv.setMilk(-10);
+        assertEquals(inv.getMilk(), 15);
+    }
+
+    @Test
     public void testaddMilk0() {
         try {
             inv.addMilk("0");
@@ -175,6 +262,27 @@ public class InventoryTest extends TestCase{
             fail("Should parse int");
         };
         assertEquals(inv.getMilk(), 15);
+    }
+
+    @Test
+    public void testaddMilk5() {
+        try {
+            inv.addMilk("5");
+        } catch (InventoryException ex) {
+            fail("Should parse int");
+        };
+        assertEquals(inv.getMilk(), 20);
+    }
+
+    @Test
+    public void testaddMilk0Dec() {
+        try {
+            inv.addMilk("0.0");
+        } catch (InventoryException ex) {
+            assertEquals(ex.getMessage(), "Units of milk must be a positive integer");
+            return;
+        };
+        fail("Should not parse invalid input");
     }
 
     @Test
@@ -201,8 +309,43 @@ public class InventoryTest extends TestCase{
 
     @Test
     public void testenoughIngredientsYes() {
+        assertTrue(inv.enoughIngredients(r));
+    }
+
+    @Test
+    public void testenoughIngredientsChocolateYes() {
         try {
             r.setAmtChocolate("15");
+        } catch (RecipeException ex) {
+            fail("Should parse int");
+        };
+        assertTrue(inv.enoughIngredients(r));
+    }
+
+    @Test
+    public void testenoughIngredientsCoffeeYes() {
+        try {
+            r.setAmtCoffee("15");
+        } catch (RecipeException ex) {
+            fail("Should parse int");
+        };
+        assertTrue(inv.enoughIngredients(r));
+    }
+
+    @Test
+    public void testenoughIngredientsSugarYes() {
+        try {
+            r.setAmtSugar("15");
+        } catch (RecipeException ex) {
+            fail("Should parse int");
+        };
+        assertTrue(inv.enoughIngredients(r));
+    }
+
+    @Test
+    public void testenoughIngredientsMilkYes() {
+        try {
+            r.setAmtMilk("15");
         } catch (RecipeException ex) {
             fail("Should parse int");
         };
@@ -306,6 +449,46 @@ public class InventoryTest extends TestCase{
         };
         inv.useIngredients(r);
         assertEquals(inv.getChocolate(), 10);
+    }
+
+    @Test
+    public void testuseIngredientsCoffeePass() {
+        try {
+            r.setAmtCoffee("5");
+        } catch (RecipeException ex) {
+            fail("Should parse int");
+        };
+        assertTrue(inv.useIngredients(r));
+    }
+
+    @Test
+    public void testuseIngredientsMilkPass() {
+        try {
+            r.setAmtMilk("5");
+        } catch (RecipeException ex) {
+            fail("Should parse int");
+        };
+        assertTrue(inv.useIngredients(r));
+    }
+
+    @Test
+    public void testuseIngredientsSugarPass() {
+        try {
+            r.setAmtSugar("5");
+        } catch (RecipeException ex) {
+            fail("Should parse int");
+        };
+        assertTrue(inv.useIngredients(r));
+    }
+
+    @Test
+    public void testuseIngredientsChocolatePass() {
+        try {
+            r.setAmtChocolate("5");
+        } catch (RecipeException ex) {
+            fail("Should parse int");
+        };
+        assertTrue(inv.useIngredients(r));
     }
 
     @Test
