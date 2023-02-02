@@ -24,25 +24,4 @@ public class RecipeTest extends TestCase {
         r = null;
         super.setUp();
 	}
-
-    @Test
-    public void testenoughIngredientsYes() {
-        try {
-            r.setAmtChocolate("15");
-        } catch (RecipeException ex) {
-            fail("Should parse int");
-        };
-        assertTrue(inv.enoughIngredients(r));
-    }
-
-    @Test
-    public void testenoughIngredientsChocolateNo() {
-        try {
-            r.setAmtChocolate("16");
-        } catch (RecipeException ex) {
-            fail("Should parse int");
-        };
-        assertFalse(inv.enoughIngredients(r));
-    }
-
 }

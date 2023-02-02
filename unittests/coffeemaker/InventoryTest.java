@@ -109,4 +109,47 @@ public class InventoryTest extends TestCase{
         };
         fail("Should not parse invalid input");
     }
+
+    @Test
+    public void testGetSugar() {
+        assertEquals(inv.getSugar(), 15);
+    }
+
+    @Test
+    public void testsetSugar() {
+        inv.setSugar(10);
+        assertEquals(inv.getSugar(), 10);
+    }
+
+    @Test
+    public void testaddSugar0() {
+        try {
+            inv.addSugar("0");
+        } catch (InventoryException ex) {
+            fail("Should parse int");
+        };
+        assertEquals(inv.getSugar(), 15);
+    }
+
+    @Test
+    public void testaddSugarInvalid() {
+        try {
+            inv.addSugar("abc");
+        } catch (InventoryException ex) {
+            assertEquals(ex.getMessage(), "Units of sugar must be a positive integer");
+            return;
+        };
+        fail("Should not parse invalid input");
+    }
+
+    @Test
+    public void testaddSugarInvalidNeg() {
+        try {
+            inv.addSugar("-10");
+        } catch (InventoryException ex) {
+            assertEquals(ex.getMessage(), "Units of sugar must be a positive integer");
+            return;
+        };
+        fail("Should not parse invalid input");
+    }
 }
