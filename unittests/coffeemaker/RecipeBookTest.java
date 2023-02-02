@@ -31,6 +31,10 @@ public class RecipeBookTest extends TestCase {
 
     @Test
     public void testGetRecipes() throws RecipeException {
+        r.setName("milk");
+        book.addRecipe(r);
+
+        assertEquals(book.getRecipes().length, 4);
    }
 
     @Test
