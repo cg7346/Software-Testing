@@ -59,6 +59,17 @@ public class RecipeTest extends TestCase {
     }
 
     @Test
+    public void testSetAmtChocolateNull(){
+        try{
+            r.setAmtChocolate(null);
+        } catch (RecipeException e){
+            assertEquals(e.getMessage(), "Units of chocolate must be a positive integer");
+            return;
+        }
+        fail("Should not parse invalid input");
+    }
+
+    @Test
     public void testGetAmtCoffee(){
         assertEquals(r.getAmtCoffee(), 0);
     }
@@ -84,6 +95,17 @@ public class RecipeTest extends TestCase {
     public void testSetAmtCoffeeNegative(){
         try{
             r.setAmtCoffee("-3");
+        } catch (RecipeException e){
+            assertEquals(e.getMessage(), "Units of coffee must be a positive integer");
+            return;
+        }
+        fail("Should not parse invalid input");
+    }
+
+    @Test
+    public void testSetAmtCoffeeNull(){
+        try{
+            r.setAmtCoffee(null);
         } catch (RecipeException e){
             assertEquals(e.getMessage(), "Units of coffee must be a positive integer");
             return;
@@ -125,6 +147,17 @@ public class RecipeTest extends TestCase {
     }
 
     @Test
+    public void testSetAmtMilkNull(){
+        try{
+            r.setAmtMilk(null);
+        } catch (RecipeException e){
+            assertEquals(e.getMessage(), "Units of milk must be a positive integer");
+            return;
+        }
+        fail("Should not parse invalid input");
+    }
+
+    @Test
     public void testGetAmtSugar(){
         assertEquals(r.getAmtSugar(), 0);
     }
@@ -158,6 +191,17 @@ public class RecipeTest extends TestCase {
     }
 
     @Test
+    public void testSetAmtSugarNull(){
+        try{
+            r.setAmtSugar(null);
+        } catch (RecipeException e){
+            assertEquals(e.getMessage(), "Units of sugar must be a positive integer");
+            return;
+        }
+        fail("Should not parse invalid input");
+    }
+
+    @Test
     public void testGetName(){
         assertEquals(r.getName(), "");
     }
@@ -166,6 +210,12 @@ public class RecipeTest extends TestCase {
     public void testSetName(){
         r.setName("penjamin");
         assertEquals(r.getName(), "penjamin");
+    }
+
+    @Test
+    public void testSetNameNull(){
+        r.setName(null);
+        assertEquals(r.getName(), "");
     }
 
     @Test
@@ -194,6 +244,17 @@ public class RecipeTest extends TestCase {
     public void testSetPriceNegative(){
         try{
             r.setPrice("-3");
+        } catch (RecipeException e){
+            assertEquals(e.getMessage(), "Price must be a positive integer");
+            return;
+        }
+        fail("Should not parse invalid input");
+    }
+
+    @Test
+    public void testSetPriceNull(){
+        try{
+            r.setPrice(null);
         } catch (RecipeException e){
             assertEquals(e.getMessage(), "Price must be a positive integer");
             return;
@@ -234,14 +295,6 @@ public class RecipeTest extends TestCase {
         assertFalse(r.equals(inv));
     }
 
-    @Test //TODO make this cover lines 179-180 of Recipe
-    public void testEqualsNotNullName() {
-
-        Recipe other = new Recipe();
-        other.setName("baker");
-        assertFalse(r.equals(other));
-    }
-
     @Test
     public void testEqualsDifferentName() {
         r.setName("penjamin");
@@ -251,7 +304,7 @@ public class RecipeTest extends TestCase {
     }
 
     @Test
-    public void testEqualsTrue() {
+    public void testEqualsSameName() {
         r.setName("penjamin");
         Recipe other = new Recipe();
         other.setName("penjamin");
