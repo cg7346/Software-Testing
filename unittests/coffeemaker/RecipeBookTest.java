@@ -31,9 +31,6 @@ public class RecipeBookTest extends TestCase {
 
     @Test
     public void testGetRecipes() throws RecipeException {
-        r.setName("milk");
-        book.addRecipe(r);
-
         assertEquals(book.getRecipes().length, 4);
    }
 
@@ -52,9 +49,13 @@ public class RecipeBookTest extends TestCase {
     }
 
     @Test
-    public void testDeleteRecipeNull() throws RecipeException {
-        r.setName("milk");
+    public void testAddRecipeValue() {
         book.addRecipe(r);
+        assertEquals(book.getRecipes()[0], r);
+    }
+
+    @Test
+    public void testDeleteRecipeNull() throws RecipeException {
         assertNull(book.deleteRecipe(1));
     }
 
@@ -66,13 +67,20 @@ public class RecipeBookTest extends TestCase {
     }
 
     @Test
+    public void testDeleteRecipeDeleted() throws RecipeException {
+        r.setName("milk");
+        book.addRecipe(r);
+        book.deleteRecipe(0);
+        assertEquals(book.getRecipes()[0], new Recipe());
+    }
+
+    @Test
     public void testEditRecipeString() {
         r.setName("milk");
         book.addRecipe(r);
         Recipe newR = new Recipe();
         newR.setName("sugar");
         assertEquals(book.editRecipe(0, newR), "sugar");
-
     }
 
     @Test
@@ -91,5 +99,23 @@ public class RecipeBookTest extends TestCase {
         Recipe newR = new Recipe();
         newR.setName("sugar");
         assertNull(book.editRecipe(1, newR));
+    }
+
+    @Test
+    public void testEditRecipeEdited() {
+        r.setName("milk");
+        book.addRecipe(r);
+        Recipe newR = new Recipe();
+        newR.setName("not milk");
+        book.editRecipe(0, newR);
+        assertEquals(book.getRecipes()[0], newR);
+    }
+
+    @Test
+    public void testEditRecipeNotEdited() {
+        Recipe newR = new Recipe();
+        newR.setName("sugar");
+        book.editRecipe(0, newR);
+        assertNull(book.getRecipes()[0]);
     }
 }
