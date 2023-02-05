@@ -40,11 +40,21 @@ public class RecipeBookTest extends TestCase {
     }
 
     @Test
+    public void testAddRecipeDupe() {
+        book.addRecipe(r);
+        assertFalse(book.addRecipe(r));
+    }
+
+    @Test
     public void testAddRecipeFalse() {
         book.addRecipe(r);
+        r.setName("Recipe 1");
         book.addRecipe(r);
+        r.setName("Recipe 2");
         book.addRecipe(r);
+        r.setName("Recipe 3");
         book.addRecipe(r);
+        r.setName("Recipe 4");
         assertFalse(book.addRecipe(r));
     }
 
@@ -72,6 +82,12 @@ public class RecipeBookTest extends TestCase {
         book.addRecipe(r);
         book.deleteRecipe(0);
         assertEquals(book.getRecipes()[0], new Recipe());
+    }
+
+    @Test
+    public void testDeleteRecipeOutOfRange() throws RecipeException {
+        book.addRecipe(r);
+        assertNull(book.deleteRecipe(10));
     }
 
     @Test
