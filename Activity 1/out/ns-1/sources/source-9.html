@@ -1,0 +1,416 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RecipeTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coffeemaker</a>
+</div>
+
+<h1>Coverage Summary for Class: RecipeTest (coffeemaker)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RecipeTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (39/39)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    74.8%
+  </span>
+  <span class="absValue">
+    (89/119)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coffeemaker;
+&nbsp;
+&nbsp;import org.junit.After;
+&nbsp;import org.junit.Before;
+&nbsp;import org.junit.Test;
+&nbsp;
+&nbsp;import coffeemaker.exceptions.RecipeException;
+&nbsp;import junit.framework.TestCase;
+&nbsp;
+<b class="fc">&nbsp;public class RecipeTest extends TestCase {</b>
+&nbsp;    private Inventory inv;
+&nbsp;    private Recipe r;
+&nbsp;
+&nbsp;    @Before
+&nbsp;	public void setUp() throws Exception {
+<b class="fc">&nbsp;        inv = new Inventory();</b>
+<b class="fc">&nbsp;        r = new Recipe();</b>
+<b class="fc">&nbsp;        super.setUp();</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@After
+&nbsp;	public void tearDown() throws Exception {
+<b class="fc">&nbsp;        inv = null;</b>
+<b class="fc">&nbsp;        r = null;</b>
+<b class="fc">&nbsp;        super.setUp();</b>
+&nbsp;	}
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetAmtChocolate(){
+<b class="fc">&nbsp;        assertEquals(r.getAmtChocolate(), 0);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtChocolate() throws RecipeException{
+<b class="fc">&nbsp;        r.setAmtChocolate(&quot;4&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(r.getAmtChocolate(), 4);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtChocolateString(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtChocolate(&quot;fti&quot;);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of chocolate must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtChocolateNegative(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtChocolate(&quot;-3&quot;);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of chocolate must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtChocolateNull(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtChocolate(null);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of chocolate must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetAmtCoffee(){
+<b class="fc">&nbsp;        assertEquals(r.getAmtCoffee(), 0);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtCoffee() throws RecipeException{
+<b class="fc">&nbsp;        r.setAmtCoffee(&quot;4&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(r.getAmtCoffee(), 4);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtCoffeeString(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtCoffee(&quot;fti&quot;);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of coffee must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtCoffeeNegative(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtCoffee(&quot;-3&quot;);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of coffee must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtCoffeeNull(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtCoffee(null);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of coffee must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetAmtMilk(){
+<b class="fc">&nbsp;        assertEquals(r.getAmtMilk(), 0);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtMilk() throws RecipeException{
+<b class="fc">&nbsp;        r.setAmtMilk(&quot;4&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(r.getAmtMilk(), 4);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtMilkString(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtMilk(&quot;fti&quot;);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of milk must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtMilkNegative(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtMilk(&quot;-3&quot;);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of milk must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtMilkNull(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtMilk(null);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of milk must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetAmtSugar(){
+<b class="fc">&nbsp;        assertEquals(r.getAmtSugar(), 0);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtSugar() throws RecipeException{
+<b class="fc">&nbsp;        r.setAmtSugar(&quot;4&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(r.getAmtSugar(), 4);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtSugarString(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtSugar(&quot;fti&quot;);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of sugar must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtSugarNegative(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtSugar(&quot;-3&quot;);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of sugar must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetAmtSugarNull(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setAmtSugar(null);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Units of sugar must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetName(){
+<b class="fc">&nbsp;        assertEquals(r.getName(), &quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetName(){
+<b class="fc">&nbsp;        r.setName(&quot;penjamin&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(r.getName(), &quot;penjamin&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetNameNull(){
+<b class="fc">&nbsp;        r.setName(null);</b>
+<b class="fc">&nbsp;        assertEquals(r.getName(), &quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetPrice(){
+<b class="fc">&nbsp;        assertEquals(r.getPrice(), 0);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetPrice() throws RecipeException{
+<b class="fc">&nbsp;        r.setPrice(&quot;4&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(r.getPrice(), 4);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetPriceString(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setPrice(&quot;fti&quot;);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Price must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetPriceNegative(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setPrice(&quot;-3&quot;);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Price must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetPriceNull(){
+&nbsp;        try{
+<b class="fc">&nbsp;            r.setPrice(null);</b>
+<b class="fc">&nbsp;        } catch (RecipeException e){</b>
+<b class="fc">&nbsp;            assertEquals(e.getMessage(), &quot;Price must be a positive integer&quot;);</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        fail(&quot;Should not parse invalid input&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testToString(){
+<b class="fc">&nbsp;        assertEquals(r.toString(), &quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testHashCode() {
+<b class="fc">&nbsp;        String name = &quot;penjamin&quot;;</b>
+<b class="fc">&nbsp;        r.setName(name);</b>
+<b class="fc">&nbsp;        int expected = 31 + name.hashCode();</b>
+<b class="fc">&nbsp;        assertEquals(r.hashCode(), expected);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testHashCodeNullName() {
+<b class="fc">&nbsp;        assertEquals(r.hashCode(), 31);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testEqualsSelf() {
+<b class="fc">&nbsp;        assertTrue(r.equals(r));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testEqualsNull() {
+<b class="fc">&nbsp;        assertFalse(r.equals(null));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testEqualsDifferentClass() {
+<b class="fc">&nbsp;        assertFalse(r.equals(inv));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testEqualsDifferentName() {
+<b class="fc">&nbsp;        r.setName(&quot;penjamin&quot;);</b>
+<b class="fc">&nbsp;        Recipe other = new Recipe();</b>
+<b class="fc">&nbsp;        other.setName(&quot;baker&quot;);</b>
+<b class="fc">&nbsp;        assertFalse(r.equals(other));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testEqualsSameName() {
+<b class="fc">&nbsp;        r.setName(&quot;penjamin&quot;);</b>
+<b class="fc">&nbsp;        Recipe other = new Recipe();</b>
+<b class="fc">&nbsp;        other.setName(&quot;penjamin&quot;);</b>
+<b class="fc">&nbsp;        assertTrue(r.equals(other));</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-05 18:38</div>
+</div>
+</body>
+</html>

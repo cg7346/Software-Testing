@@ -1,11 +1,2 @@
-unittests/.DS_Store
-target/maven-archiver/pom.properties
-target/my-app-1.0-SNAPSHOT.jar
+
 .DS_Store
-.classpath
-cov.xml
-.project
-pom.xml
-/.idea/
-/target/
-/CoffeeMaker_SWEN352.iml
