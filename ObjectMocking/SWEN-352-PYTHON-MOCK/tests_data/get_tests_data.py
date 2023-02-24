@@ -16,6 +16,13 @@ class GetData:
         with open('tests_data/ebooks.txt', 'w') as f:
             f.write(json.dumps(ebooks))
 
+    def get_books_author(self, author):
+        print("get book info: " + author)
+        author_books = self.api.books_by_author(author)
+        print(author_books)
+        with open('tests_data/author_books.txt', 'w') as f:
+            f.write(json.dumps(author_books))
+
     def get_json(self, book):
         request_url = "%s?q=%s" % (self.api.API_URL, book)
         json_data = self.api.make_request(request_url)
@@ -26,4 +33,5 @@ class GetData:
 if __name__ == "__main__":
     getdata = GetData()
     getdata.get_ebooks('learning python')
+    getdata.get_books_author('Mark Lutz')
     getdata.get_json('learning python')
