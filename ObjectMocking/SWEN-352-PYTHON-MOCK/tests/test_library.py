@@ -8,12 +8,12 @@ class TestLibrary(unittest.TestCase):
 
     def setUp(self):
         self.lib = library.Library()
-        self.author = "Lutz"
-        # self.books_data = [{'title': 'Learning Python', 'ebook_count': 3}, {'title': 'Learning Python (Learning)', 'ebook_count': 1}, {'title': 'Learning Python', 'ebook_count': 1}, {'title': 'Learn to Program Using Python', 'ebook_count': 1}, {'title': 'Aprendendo Python', 'ebook_count': 1}, {'title': 'Python Basics', 'ebook_count': 1}]
         with open('tests_data/ebooks.txt', 'r') as f:
             self.books_data = json.loads(f.read())
         with open('tests_data/author_books.txt', 'r') as f:
             self.author_books = json.loads(f.read())
+        with open('tests_data/books_info.txt', 'r') as f:
+            self.books_info = json.loads(f.read())
 
     def test_is_ebook_true(self):
         self.lib.api.get_ebooks = Mock(return_value=self.books_data)
@@ -35,6 +35,6 @@ class TestLibrary(unittest.TestCase):
         self.lib.api.books_by_author = Mock(return_value=self.author_books)
         self.assertFalse(self.lib.is_book_by_author("Mark Lutz", "machine learning"))
 
-    # def test_get_languages_for_book(self):
-    #     self.lib.apiget_languages_for_book = Mock(return_value=self.json_data)
-    #     self.assertEqual(len(self.lib.get_languages_for_book('learning python')), 7)
+    def test_get_languages_for_book(self):
+        self.lib.api.get_book_info = Mock(return_value=self.books_info)
+        self.assertEqual(len(self.lib.get_languages_for_book('learning python')), 3)
