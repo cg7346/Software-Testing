@@ -1,6 +1,8 @@
 import unittest
 from unittest.mock import Mock
+
 from library import library
+from library import patron
 import json
 
 
@@ -8,12 +10,19 @@ class TestLibrary(unittest.TestCase):
 
     def setUp(self):
         self.lib = library.Library()
+        self.pat_1 = patron.Patron('fname', 'lname', '20', '1234')
+        self.pat_2 = patron.Patron('test', 'testing', '20', '1')
+
         with open('tests_data/ebooks.txt', 'r') as f:
             self.books_data = json.loads(f.read())
         with open('tests_data/author_books.txt', 'r') as f:
             self.author_books = json.loads(f.read())
         with open('tests_data/books_info.txt', 'r') as f:
             self.books_info = json.loads(f.read())
+
+    ############################################################################
+    ################################ API METHODS ###############################
+    ############################################################################
 
     def test_is_ebook_true(self):
         self.lib.api.get_ebooks = Mock(return_value=self.books_data)
@@ -38,3 +47,11 @@ class TestLibrary(unittest.TestCase):
     def test_get_languages_for_book(self):
         self.lib.api.get_book_info = Mock(return_value=self.books_info)
         self.assertEqual(len(self.lib.get_languages_for_book('learning python')), 3)
+
+    ############################################################################
+    ################################# DB METHODS ###############################
+    ############################################################################
+
+    def test_register_patron(self):
+        self.lib.db.insert_patron = Mock(return_value='2')
+        self.assertEqual(self.lib.register_patron('john', 'doe', '20', '2'), '2')
