@@ -11,6 +11,7 @@ class TestLibrary(unittest.TestCase):
     def setUp(self):
         self.lib = library.Library()
         self.pat_1 = patron.Patron('fname', 'lname', '20', '1234')
+        self.lib.db.insert_patron(self.pat_1)
         self.pat_2 = patron.Patron('test', 'testing', '20', '1')
 
         with open('tests_data/ebooks.txt', 'r') as f:
@@ -55,3 +56,19 @@ class TestLibrary(unittest.TestCase):
     def test_register_patron(self):
         self.lib.db.insert_patron = Mock(return_value='2')
         self.assertEqual(self.lib.register_patron('john', 'doe', '20', '2'), '2')
+
+    def test_is_patron_registered_true(self):
+        self.assertTrue(self.lib.is_patron_registered(self.pat_1))
+
+    def test_is_patron_registered_false(self):
+        self.assertFalse(self.lib.is_patron_registered(self.pat_2))
+
+    def test_borrow_book(self):
+        self.lib.borrow_book('learning python', self.pat_1)
+        self.assertEqual(self.pat_1.borrowed_books, ['learning python'])
+
+    def test_return_borrowed_book(self):
+        self.lib.borrow_book('learning python', self.pat_1)
+        self.lib.return_borrowed_book('learning python', self.pat_1)
+        self.assertEqual(self.pat_1.borrowed_books, [])
+
