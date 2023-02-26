@@ -3,7 +3,7 @@ from unittest.mock import Mock
 from library import library_db_interface
 
 
-class TestLibbraryDBInterface(unittest.TestCase):
+class TestLibraryDBInterface(unittest.TestCase):
 
     def setUp(self):
         self.db_interface = library_db_interface.Library_DB()

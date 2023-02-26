@@ -44,7 +44,7 @@ class TestExtApiInterface(unittest.TestCase):
         self.api.make_request = Mock(return_value=self.json_data)
         self.assertEqual(self.api.get_ebooks(self.book), self.books_data)
 
-    def test_get_ebooks_none(self):     # TODO: I don't know if this is right
+    def test_get_ebooks_none(self):
         self.api.make_request = Mock(return_value=[])
         self.assertEqual(self.api.get_ebooks(self.book), [])
 
@@ -52,7 +52,7 @@ class TestExtApiInterface(unittest.TestCase):
         self.api.make_request = Mock(return_value=self.json_data)
         self.assertTrue(self.api.is_book_available('learning python'))
 
-    def test_is_book_available_false(self):     # TODO: I don't know if this is right
+    def test_is_book_available_false(self):
         self.api.make_request = Mock(return_value=None)
         self.assertFalse(self.api.is_book_available(self.book))
 
@@ -60,7 +60,7 @@ class TestExtApiInterface(unittest.TestCase):
         self.api.make_request = Mock(return_value=self.author_data)
         self.assertEqual(self.api.books_by_author(self.author), self.author_books)
 
-    def test_books_by_author_none(self):     # TODO: I don't know if this is right
+    def test_books_by_author_none(self):
         self.api.make_request = Mock(return_value=[])
         self.assertEqual(self.api.books_by_author('yes'), [])
 
@@ -68,6 +68,6 @@ class TestExtApiInterface(unittest.TestCase):
         self.api.make_request = Mock(return_value=self.json_data)
         self.assertEqual(self.api.get_book_info(self.book), self.book_info)
 
-    def test_get_book_info_none(self):       # TODO: I don't know if this is right
+    def test_get_book_info_none(self):
         self.api.make_request = Mock(return_value=[])
         self.assertEqual(self.api.get_book_info(self.book), [])

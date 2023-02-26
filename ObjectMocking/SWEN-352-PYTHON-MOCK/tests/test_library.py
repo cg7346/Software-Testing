@@ -58,7 +58,6 @@ class TestLibrary(unittest.TestCase):
         self.lib.db.insert_patron = Mock(return_value='2')
         self.assertEqual(self.lib.register_patron('john', 'doe', '20', '2'), '2')
 
-    # TODO: check these idk if I am supposed to mock data in these tests below
     def test_is_patron_registered_true(self):
         self.assertTrue(self.lib.is_patron_registered(self.pat_1))
 
