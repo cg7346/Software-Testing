@@ -50,5 +50,4 @@ class TestLibbraryDBInterface(unittest.TestCase):
         data = {'fname': 'name', 'lname': 'name', 'age': 'age', 'memberID': 'memberID',
                 'borrowed_books': []}
         self.db_interface.convert_patron_to_db_format = Mock(return_value=data)
-        self.db_interface.db.search = Mock(return_value=False)
         self.assertEqual(self.db_interface.retrieve_patron(patron_mock), None)

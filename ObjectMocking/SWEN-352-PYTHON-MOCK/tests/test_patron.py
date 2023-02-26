@@ -15,25 +15,25 @@ class TestPatron(unittest.TestCase):
 
     def test_add_borrowed_book_not_present(self):
         self.pat.add_borrowed_book("where the wild things are")
-        self.assertEquals(self.pat.borrowed_books[0], "where the wild things are")
+        self.assertEqual(self.pat.borrowed_books[0], "where the wild things are")
 
     def test_add_borrowed_book_present(self):
         self.pat.add_borrowed_book("where the wild things are")
         self.pat.add_borrowed_book("where the wild things are")
-        self.assertEquals(self.pat.borrowed_books, ["where the wild things are"])
+        self.assertEqual(self.pat.borrowed_books, ["where the wild things are"])
 
     def test_get_borrowed_books(self):
         self.pat.add_borrowed_book("where the wild things are")
-        self.assertEquals(self.pat.get_borrowed_books(), ["where the wild things are"])
+        self.assertEqual(self.pat.get_borrowed_books(), ["where the wild things are"])
     
     def test_return_borrowed_book_present(self):
         self.pat.add_borrowed_book("where the wild things are")
         self.pat.return_borrowed_book("where the wild things are")
-        self.assertEquals(self.pat.borrowed_books, [])
+        self.assertEqual(self.pat.borrowed_books, [])
     
     def test_return_borrowed_book_not_present(self):
         self.pat.return_borrowed_book("where the wild things are")
-        self.assertEquals(self.pat.borrowed_books, [])
+        self.assertEqual(self.pat.borrowed_books, [])
 
     def test_equals_true(self):
         pat2 = patron.Patron('fname', 'lname', '20', '1234')
@@ -52,13 +52,13 @@ class TestPatron(unittest.TestCase):
         self.assertFalse(self.pat != pat2)
 
     def test_get_fname(self):
-        self.assertEquals(self.pat.get_fname(), 'fname')
+        self.assertEqual(self.pat.get_fname(), 'fname')
 
     def test_get_lname(self):
-        self.assertEquals(self.pat.get_lname(), 'lname')
+        self.assertEqual(self.pat.get_lname(), 'lname')
 
     def test_get_age(self):
-        self.assertEquals(self.pat.get_age(), '20')
+        self.assertEqual(self.pat.get_age(), '20')
 
     def test_get_memberID(self):
-        self.assertEquals(self.pat.get_memberID(), '1234')
+        self.assertEqual(self.pat.get_memberID(), '1234')
