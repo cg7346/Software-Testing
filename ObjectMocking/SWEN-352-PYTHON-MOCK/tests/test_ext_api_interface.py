@@ -19,6 +19,12 @@ class TestExtApiInterface(unittest.TestCase):
             self.books_data = json.loads(f.read())
         with open('tests_data/json_data.txt', 'r') as f:
             self.json_data = json.loads(f.read())
+        with open('tests_data/author_books.txt', 'r') as f:
+            self.author_books = json.loads(f.read())
+        with open('tests_data/author_data.txt', 'r') as f:
+            self.author_data = json.loads(f.read())
+        with open('tests_data/books_info.txt', 'r') as f:
+            self.book_info = json.loads(f.read())
 
     def test_make_request_True(self):
         attr = {'json.return_value': dict()}
@@ -38,20 +44,30 @@ class TestExtApiInterface(unittest.TestCase):
         self.api.make_request = Mock(return_value=self.json_data)
         self.assertEqual(self.api.get_ebooks(self.book), self.books_data)
 
+    def test_get_ebooks_none(self):     # TODO: I don't know if this is right
+        self.api.make_request = Mock(return_value=[])
+        self.assertEqual(self.api.get_ebooks(self.book), [])
+
     def test_is_book_available_true(self):
         self.api.make_request = Mock(return_value=self.json_data)
         self.assertTrue(self.api.is_book_available('learning python'))
 
-    # def test_is_book_available_false(self):
-    #     # self.lib.is_book_borrowed = Mock(return_value=True)
-    #     self.api.make_request = Mock(return_value=self.json_data)
-    #     self.lib.borrow_book(self.book, self.pat)
-    #     self.assertFalse(self.api.is_book_available(self.book))
+    def test_is_book_available_false(self):     # TODO: I don't know if this is right
+        self.api.make_request = Mock(return_value=None)
+        self.assertFalse(self.api.is_book_available(self.book))
 
     def test_books_by_author(self):
-        self.api.make_request = Mock(return_value=self.json_data)
-        self.assertEqual(len(self.api.books_by_author(self.author)), len(self.json_data["docs"]))
+        self.api.make_request = Mock(return_value=self.author_data)
+        self.assertEqual(self.api.books_by_author(self.author), self.author_books)
 
-    def test_books_by_author_none(self):
+    def test_books_by_author_none(self):     # TODO: I don't know if this is right
         self.api.make_request = Mock(return_value=[])
-        self.assertEqual(len(self.api.books_by_author('yes')), 0)
+        self.assertEqual(self.api.books_by_author('yes'), [])
+
+    def test_get_book_info(self):
+        self.api.make_request = Mock(return_value=self.json_data)
+        self.assertEqual(self.api.get_book_info(self.book), self.book_info)
+
+    def test_get_book_info_none(self):       # TODO: I don't know if this is right
+        self.api.make_request = Mock(return_value=[])
+        self.assertEqual(self.api.get_book_info(self.book), [])
