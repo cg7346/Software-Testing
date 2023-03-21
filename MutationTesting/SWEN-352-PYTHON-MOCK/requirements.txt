@@ -5,6 +5,7 @@ chardet==3.0.4
 coverage==4.5.2
 idna==2.8
 more-itertools==6.0.0
+mutmut==2.2.0
 pbr==5.1.2
 pluggy==0.8.1
 py==1.8.0
