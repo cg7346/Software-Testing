@@ -1,1 +1,0 @@
-[{"title": "Learning Python", "ebook_count": 6}, {"title": "Learning Scientific Programming with Python", "ebook_count": 1}, {"title": "Reinforcement learning with Python", "ebook_count": 1}, {"title": "Aprendendo Python", "ebook_count": 1}]
