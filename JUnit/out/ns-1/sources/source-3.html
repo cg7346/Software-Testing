@@ -1,0 +1,354 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Inventory</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coffeemaker</a>
+</div>
+
+<h1>Coverage Summary for Class: Inventory (coffeemaker)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Inventory</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (16/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (80/80)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coffeemaker;
+&nbsp;
+&nbsp;import coffeemaker.exceptions.InventoryException;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Sarah Heckman
+&nbsp; *
+&nbsp; * Inventory for the coffee maker
+&nbsp; */
+&nbsp;public class Inventory {
+&nbsp;    
+&nbsp;    private static int coffee;
+&nbsp;    private static int milk;
+&nbsp;    private static int sugar;
+&nbsp;    private static int chocolate;
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Creates a coffee maker inventory object and
+&nbsp;     * fills each item in the inventory with 15 units.
+&nbsp;     */
+<b class="fc">&nbsp;    public Inventory() {</b>
+<b class="fc">&nbsp;    	setCoffee(15);</b>
+<b class="fc">&nbsp;    	setMilk(15);</b>
+<b class="fc">&nbsp;    	setSugar(15);</b>
+<b class="fc">&nbsp;    	setChocolate(15);</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Returns the current number of chocolate units in 
+&nbsp;     * the inventory.
+&nbsp;     * @return int
+&nbsp;     */
+&nbsp;    public int getChocolate() {
+<b class="fc">&nbsp;        return chocolate;</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Sets the number of chocolate units in the inventory
+&nbsp;     * to the specified amount.
+&nbsp;     * @param chocolate
+&nbsp;     */
+&nbsp;    public synchronized void setChocolate(int chocolate) {
+<b class="fc">&nbsp;    	if(chocolate &gt;= 0) {</b>
+<b class="fc">&nbsp;    		Inventory.chocolate = chocolate;</b>
+&nbsp;    	}
+&nbsp;        
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Add the number of chocolate units in the inventory 
+&nbsp;     * to the current amount of chocolate units.
+&nbsp;     * @param chocolate
+&nbsp;     * @throws InventoryException
+&nbsp;     */
+&nbsp;    public synchronized void addChocolate(String chocolate) throws InventoryException {
+<b class="fc">&nbsp;    	int amtChocolate = 0;</b>
+&nbsp;    	try {
+<b class="fc">&nbsp;    		amtChocolate = Integer.parseInt(chocolate);</b>
+<b class="fc">&nbsp;    	} catch (NumberFormatException e) {</b>
+<b class="fc">&nbsp;    		throw new InventoryException(&quot;Units of chocolate must be a positive integer&quot;);</b>
+<b class="fc">&nbsp;    	}</b>
+<b class="fc">&nbsp;		if (amtChocolate &gt;= 0) {</b>
+<b class="fc">&nbsp;			Inventory.chocolate += amtChocolate;</b>
+&nbsp;		} else {
+<b class="fc">&nbsp;			throw new InventoryException(&quot;Units of chocolate must be a positive integer&quot;);</b>
+&nbsp;		}
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Returns the current number of coffee units in
+&nbsp;     * the inventory.
+&nbsp;     * @return int
+&nbsp;     */
+&nbsp;    public int getCoffee() {
+<b class="fc">&nbsp;        return coffee;</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Sets the number of coffee units in the inventory 
+&nbsp;     * to the specified amount.
+&nbsp;     * @param coffee
+&nbsp;     */
+&nbsp;    public synchronized void setCoffee(int coffee) {
+<b class="fc">&nbsp;    	if(coffee &gt;= 0) {</b>
+<b class="fc">&nbsp;    		Inventory.coffee = coffee;</b>
+&nbsp;    	}
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Add the number of coffee units in the inventory 
+&nbsp;     * to the current amount of coffee units.
+&nbsp;     * @param coffee
+&nbsp;     * @throws InventoryException
+&nbsp;     */
+&nbsp;    public synchronized void addCoffee(String coffee) throws InventoryException {
+<b class="fc">&nbsp;    	int amtCoffee = 0;</b>
+&nbsp;    	try {
+<b class="fc">&nbsp;    		amtCoffee = Integer.parseInt(coffee);</b>
+<b class="fc">&nbsp;    	} catch (NumberFormatException e) {</b>
+<b class="fc">&nbsp;    		throw new InventoryException(&quot;Units of coffee must be a positive integer&quot;);</b>
+<b class="fc">&nbsp;    	}</b>
+<b class="fc">&nbsp;		if (amtCoffee &gt;= 0) {</b>
+<b class="fc">&nbsp;			Inventory.coffee += amtCoffee;</b>
+&nbsp;		} else {
+<b class="fc">&nbsp;			throw new InventoryException(&quot;Units of coffee must be a positive integer&quot;);</b>
+&nbsp;		}
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Returns the current number of milk units in
+&nbsp;     * the inventory.
+&nbsp;     * @return int
+&nbsp;     */
+&nbsp;    public int getMilk() {
+<b class="fc">&nbsp;        return milk;</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Sets the number of milk units in the inventory
+&nbsp;     * to the specified amount.
+&nbsp;     * @param milk
+&nbsp;     */
+&nbsp;    public synchronized void setMilk(int milk) {
+<b class="fc">&nbsp;    	if(milk &gt;= 0) {</b>
+<b class="fc">&nbsp;    		Inventory.milk = milk;</b>
+&nbsp;    	}
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Add the number of milk units in the inventory 
+&nbsp;     * to the current amount of milk units.
+&nbsp;     * @param milk
+&nbsp;     * @throws InventoryException
+&nbsp;     */
+&nbsp;    public synchronized void addMilk(String milk) throws InventoryException {
+<b class="fc">&nbsp;    	int amtMilk = 0;</b>
+&nbsp;    	try {
+<b class="fc">&nbsp;    		amtMilk = Integer.parseInt(milk);</b>
+<b class="fc">&nbsp;    	} catch (NumberFormatException e) {</b>
+<b class="fc">&nbsp;    		throw new InventoryException(&quot;Units of milk must be a positive integer&quot;);</b>
+<b class="fc">&nbsp;    	}</b>
+<b class="fc">&nbsp;		if (amtMilk &gt;= 0) {</b>
+<b class="fc">&nbsp;			Inventory.milk += amtMilk;</b>
+&nbsp;		} else {
+<b class="fc">&nbsp;			throw new InventoryException(&quot;Units of milk must be a positive integer&quot;);</b>
+&nbsp;		}
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Returns the current number of sugar units in 
+&nbsp;     * the inventory.
+&nbsp;     * @return int
+&nbsp;     */
+&nbsp;    public int getSugar() {
+<b class="fc">&nbsp;        return sugar;</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Sets the number of sugar units in the inventory
+&nbsp;     * to the specified amount.
+&nbsp;     * @param sugar
+&nbsp;     */
+&nbsp;    public synchronized void setSugar(int sugar) {
+<b class="fc">&nbsp;    	if(sugar &gt;= 0) {</b>
+<b class="fc">&nbsp;    		Inventory.sugar = sugar;</b>
+&nbsp;    	}
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Add the number of sugar units in the inventory 
+&nbsp;     * to the current amount of sugar units.
+&nbsp;     * @param sugar
+&nbsp;     * @throws InventoryException
+&nbsp;     */
+&nbsp;    public synchronized void addSugar(String sugar) throws InventoryException {
+<b class="fc">&nbsp;    	int amtSugar = 0;</b>
+&nbsp;    	try {
+<b class="fc">&nbsp;    		amtSugar = Integer.parseInt(sugar);</b>
+<b class="fc">&nbsp;    	} catch (NumberFormatException e) {</b>
+<b class="fc">&nbsp;    		throw new InventoryException(&quot;Units of sugar must be a positive integer&quot;);</b>
+<b class="fc">&nbsp;    	}</b>
+<b class="fc">&nbsp;		if (amtSugar &gt;= 0) {</b>
+<b class="fc">&nbsp;			Inventory.sugar += amtSugar;</b>
+&nbsp;		} else {
+<b class="fc">&nbsp;			throw new InventoryException(&quot;Units of sugar must be a positive integer&quot;);</b>
+&nbsp;		}
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Returns true if there are enough ingredients to make
+&nbsp;     * the beverage.
+&nbsp;     * @param r
+&nbsp;     * @return boolean
+&nbsp;     */
+&nbsp;    protected synchronized boolean enoughIngredients(Recipe r) {
+<b class="fc">&nbsp;        boolean isEnough = true;</b>
+<b class="fc">&nbsp;        if(Inventory.coffee &lt; r.getAmtCoffee()) {</b>
+<b class="fc">&nbsp;            isEnough = false;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if(Inventory.milk &lt; r.getAmtMilk()) {</b>
+<b class="fc">&nbsp;            isEnough = false;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if(Inventory.sugar &lt; r.getAmtSugar()) {</b>
+<b class="fc">&nbsp;            isEnough = false;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if(Inventory.chocolate &lt; r.getAmtChocolate()) {</b>
+<b class="fc">&nbsp;            isEnough = false;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return isEnough;</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Removes the ingredients used to make the specified 
+&nbsp;     * recipe.  Assumes that the user has checked that there
+&nbsp;     * are enough ingredients to make 
+&nbsp;     * @param r
+&nbsp;     */
+&nbsp;    public synchronized boolean useIngredients(Recipe r) {
+<b class="fc">&nbsp;    	if (enoughIngredients(r)) {</b>
+<b class="fc">&nbsp;	    	Inventory.coffee -= r.getAmtCoffee();</b>
+<b class="fc">&nbsp;	    	Inventory.milk -= r.getAmtMilk();</b>
+<b class="fc">&nbsp;	    	Inventory.sugar -= r.getAmtSugar();</b>
+<b class="fc">&nbsp;	    	Inventory.chocolate -= r.getAmtChocolate();</b>
+<b class="fc">&nbsp;	    	return true;</b>
+&nbsp;    	} else {
+<b class="fc">&nbsp;    		return false;</b>
+&nbsp;    	}
+&nbsp;    }
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * Returns a string describing the current contents 
+&nbsp;     * of the inventory.
+&nbsp;     * @return String
+&nbsp;     */
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;    	StringBuffer buf = new StringBuffer();</b>
+<b class="fc">&nbsp;    	buf.append(&quot;Coffee: &quot;);</b>
+<b class="fc">&nbsp;    	buf.append(getCoffee());</b>
+<b class="fc">&nbsp;    	buf.append(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;    	buf.append(&quot;Milk: &quot;);</b>
+<b class="fc">&nbsp;    	buf.append(getMilk());</b>
+<b class="fc">&nbsp;    	buf.append(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;    	buf.append(&quot;Sugar: &quot;);</b>
+<b class="fc">&nbsp;    	buf.append(getSugar());</b>
+<b class="fc">&nbsp;    	buf.append(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;    	buf.append(&quot;Chocolate: &quot;);</b>
+<b class="fc">&nbsp;    	buf.append(getChocolate());</b>
+<b class="fc">&nbsp;    	buf.append(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;    	return buf.toString();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-05 18:38</div>
+</div>
+</body>
+</html>

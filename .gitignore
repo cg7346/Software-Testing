@@ -1,0 +1,4 @@
+.DS_Store
+virtualenv
+.idea
+.coverage
