@@ -59,6 +59,7 @@ class TestLibrary(unittest.TestCase):
         self.assertEqual(self.lib.register_patron('john', 'doe', '20', '2'), '2')
 
     def test_is_patron_registered_true(self):
+        self.pat_1 = patron.Patron('fname', 'lname', '20', '1234')
         self.assertTrue(self.lib.is_patron_registered(self.pat_1))
 
     def test_is_patron_registered_false(self):
