@@ -28,7 +28,7 @@ class TestExtApiInterface(unittest.TestCase):
 
     def test_make_request_True(self):
         attr = {'json.return_value': dict()}
-        requests.get = Mock(return_value = Mock(status_code=200, **attr))
+        requests.get = Mock(return_value=Mock(status_code=200, **attr))
         self.assertEqual(self.api.make_request(""), dict())
 
     def test_make_request_connection_error(self):
@@ -37,6 +37,10 @@ class TestExtApiInterface(unittest.TestCase):
         self.assertEqual(self.api.make_request(url), None)
 
     def test_make_request_False(self):
+        requests.get = Mock(return_value=Mock(status_code=100))
+        self.assertEqual(self.api.make_request(""), None)
+
+    def test_make_request_None(self):
         requests.get = Mock(return_value=Mock(status_code=100))
         self.assertEqual(self.api.make_request(""), None)
 
