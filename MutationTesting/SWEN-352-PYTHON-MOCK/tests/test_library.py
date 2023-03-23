@@ -78,4 +78,5 @@ class TestLibrary(unittest.TestCase):
         self.assertTrue(self.lib.is_book_borrowed(self.book, self.pat_1))
     
     def test_register_patron_is_not_none(self):
+        self.lib.db.insert_patron = Mock(return_value='2')
         self.assertTrue(self.lib.register_patron('john', 'doe', '20', '2') != None)

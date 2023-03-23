@@ -1,9 +1,13 @@
 import unittest
 from unittest.mock import Mock
 from library import library_db_interface
+from tinydb import TinyDB, Query
 
 
 class TestLibraryDBInterface(unittest.TestCase):
+
+    def verify_parameters(data, ids_match):
+        assertTrue(ids_match)
 
     def setUp(self):
         self.db_interface = library_db_interface.Library_DB()
@@ -44,8 +48,10 @@ class TestLibraryDBInterface(unittest.TestCase):
         self.db_interface.convert_patron_to_db_format = Mock(return_value=data)
         db_update_mock = Mock()
         self.db_interface.db.update = db_update_mock
-        self.db_interface.update_patron(Mock())
-        db_update_mock.assert_called()
+        patron = Mock()
+        self.db_interface.update_patron(patron)
+        query = Query()
+        db_update_mock.assert_called_with(data, query.memberID == patron.get_memberID())
 
     def test_update_patron_none(self):
         patron_mock = Mock()
