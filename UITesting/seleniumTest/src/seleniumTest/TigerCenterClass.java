@@ -28,26 +28,7 @@ class TigerCenterClass {
     }
     
     @Test
-    public void testClassSearchButton() throws Exception {
-    	driver.get(baseUrl+"tigercenter.rit.edu/tigerCenterApp/landing");
-    	WebElement classButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/landing-page/div/div/div/div/div[4]/a[1]"));
-    	assertEquals("Class Search", classButton.getText());
-    	classButton.click();
-    }
-    
-    @Test
-    public void testClickTerm() throws Exception {
-    	driver.get(baseUrl+"tigercenter.rit.edu/tigerCenterApp/landing");
-    	WebElement classButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/landing-page/div/div/div/div/div[4]/a[1]"));
-    	classButton.click();
-    	WebElement termSelect = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/div/div/select"));
-    	termSelect.click();
-    	WebElement termSelect2 = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/div/div/select/option[4]"));
-    	assertEquals("2023-24 Fall (2231)", termSelect2.getText());
-    }
-    
-    @Test
-    public void testSearchClass() throws Exception {
+    public void testSearchClassSWEN352() throws Exception {
     	driver.get(baseUrl+"tigercenter.rit.edu/tigerCenterApp/landing");
     	WebElement classButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/landing-page/div/div/div/div/div[4]/a[1]"));
     	classButton.click();
@@ -59,13 +40,72 @@ class TigerCenterClass {
     	classInput.sendKeys("SWEN-352");
     	WebElement searchButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/button"));
     	searchButton.click();
+    	WebElement classSelectedButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/div[4]/div[5]/app-class-search-row/div/div"));
+    	classSelectedButton.click();
     	//part 2a
-    	WebElement classContainer = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/div[4]/div[5]"));
-    	//app-class-search-row tag is the classes
+    	String classContainer = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/div[4]/div[5]/app-class-search-row")).getText();
+    	System.out.println("--------------");
     	System.out.println(classContainer);
+    	System.out.println("--------------");
+    	
     	
     	WebElement classText = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/div[4]/div[5]/app-class-search-row/div/div/div/div/p/span"));
     	assertEquals("Software Testing", classText.getText());
+    	Thread.sleep(3000);
+    }
+    
+    @Test
+    public void testSearchClassSWEN440() throws Exception {
+    	driver.get(baseUrl+"tigercenter.rit.edu/tigerCenterApp/landing");
+    	WebElement classButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/landing-page/div/div/div/div/div[4]/a[1]"));
+    	classButton.click();
+    	WebElement termSelect = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/div/div/select"));
+    	termSelect.click();
+    	WebElement termSelect2 = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/div/div/select/option[4]"));
+    	termSelect2.click();
+    	WebElement classInput = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/ng2-completer/div/input"));
+    	classInput.sendKeys("SWEN-440");
+    	WebElement searchButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/button"));
+    	searchButton.click();
+    	WebElement classSelectedButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/div[4]/div[5]/app-class-search-row/div/div"));
+    	classSelectedButton.click();
+    	//part 2a
+    	String classContainer = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/div[4]/div[5]/app-class-search-row")).getText();
+    	System.out.println("--------------");
+    	System.out.println(classContainer);
+    	System.out.println("--------------");
+    	
+    	
+    	WebElement classText = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/div[4]/div[5]/app-class-search-row/div/div/div/div/p/span"));
+    	assertEquals("Software System Requirements and Architecture", classText.getText());
+    	Thread.sleep(3000);
+    }
+    
+    @Test
+    public void testSearchClassSWEN261() throws Exception {
+    	driver.get(baseUrl+"tigercenter.rit.edu/tigerCenterApp/landing");
+    	WebElement classButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/landing-page/div/div/div/div/div[4]/a[1]"));
+    	classButton.click();
+    	WebElement termSelect = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/div/div/select"));
+    	termSelect.click();
+    	WebElement termSelect2 = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/div/div/select/option[4]"));
+    	termSelect2.click();
+    	WebElement classInput = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/ng2-completer/div/input"));
+    	classInput.sendKeys("SWEN-261");
+    	WebElement searchButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/form/div/button"));
+    	searchButton.click();
+    	WebElement classSelectedButton = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/div[4]/div[5]/app-class-search-row/div/div"));
+    	classSelectedButton.click();
+    	//part 2a
+    	String classContainer = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/div[4]/div[5]/app-class-search-row")).getText();
+    	System.out.println("--------------");
+    	System.out.println(classContainer);
+    	System.out.println("--------------");
+    	
+    	
+    	WebElement classText = driver.findElement(By.xpath("//*[@id=\"angularApp\"]/app-root/div[2]/mat-sidenav-container[2]/mat-sidenav-content/div[2]/class-search/div/div[2]/div[4]/div[5]/app-class-search-row/div/div/div/div/p/span"));
+    	assertEquals("Introduction to Software Engineering", classText.getText());
+    	Thread.sleep(3000);
     }
 
 }
