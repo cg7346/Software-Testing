@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
+//part 3.2: SwenDeptInfo - Kai Frazier
 class SwenDeptInfo {
 	
 	private WebDriver driver;
@@ -32,6 +33,7 @@ class SwenDeptInfo {
     public void testSwenDeptInfo() throws Exception {
     	driver.get(baseUrl+"www.rit.edu");
         try{
+            //navigate to page
             WebElement academicsMenu = driver.findElement(By.xpath("//*[@id=\"main-nav--link--academics\"]"));
             academicsMenu.click();
             WebElement collegesDropdownItem = driver.findElement(By.xpath("//*[@id=\"block-rit-bootstrap-subtheme-rit-main-menu\"]/ul/li[2]/div/div/ul[2]/li[1]/a"));
@@ -42,13 +44,16 @@ class SwenDeptInfo {
             contactsButton.click();
             WebElement swenDeptInfo = driver.findElement(By.xpath("//*[@id=\"card-header-4291\"]/p/a/span[3]"));
             swenDeptInfo.click();
+            //make sure page is loaded
             Thread.sleep(1000);
+            //find desired elements
             String contactName = driver.findElement(By.xpath("//*[@id=\"card-collapse-4291\"]/div/div/article/div/div[2]/div[1]/a")).getText();
             String contactEmail = driver.findElement(By.xpath("//*[@id=\"card-collapse-4291\"]/div/div/article/div/div[3]/div[1]/a")).getText();
             String contactTitle = driver.findElement(By.xpath("//*[@id=\"card-collapse-4291\"]/div/div/article/div/div[2]/div[2]")).getText();
             String contactDepartment = driver.findElement(By.xpath("//*[@id=\"card-collapse-4291\"]/div/div/article/div/div[2]/div[3]")).getText();
             String contactCollege = driver.findElement(By.xpath("//*[@id=\"card-collapse-4291\"]/div/div/article/div/div[2]/div[4]")).getText();
             String address = driver.findElement(By.xpath("//*[@id=\"footer--site--top-middle\"]/div/div[1]/p[2]")).getText();
+            //print results
             System.out.println("--------------");
             System.out.println(contactName);
             System.out.println(contactEmail);
