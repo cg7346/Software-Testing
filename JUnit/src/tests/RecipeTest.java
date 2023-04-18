@@ -1,4 +1,4 @@
-package coffeemaker;
+package tests;
 
 import org.junit.After;
 import org.junit.Before;
@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import coffeemaker.exceptions.RecipeException;
 import junit.framework.TestCase;
+
+import coffeemaker.*;
 
 public class RecipeTest extends TestCase {
     private Inventory inv;
