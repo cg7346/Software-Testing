@@ -12,6 +12,7 @@ import coffeemaker.*;
 public class RecipeTest extends TestCase {
     private Inventory inv;
     private Recipe r;
+    private static final int INITIAL = 0;
 
     @Before
 	public void setUp() throws Exception {
@@ -29,7 +30,7 @@ public class RecipeTest extends TestCase {
 
     @Test
     public void testGetAmtChocolate(){
-        assertEquals(r.getAmtChocolate(), 0);
+        assertEquals(r.getAmtChocolate(), INITIAL);
     }
 
     @Test

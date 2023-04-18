@@ -29,24 +29,24 @@ public class InventoryTest extends TestCase{
 	}
 
     @Test
-    public void testgetChocolate() {
+    public void testGetChocolate() {
         assertEquals(inv.getChocolate(), 15);
     }
 
     @Test
-    public void testsetChocolate() {
+    public void testSetChocolate() {
         inv.setChocolate(10);
         assertEquals(inv.getChocolate(), 10);
     }
 
     @Test
-    public void testsetChocolateNeg() {
+    public void testSetChocolateNeg() {
         inv.setChocolate(-10);
         assertEquals(inv.getChocolate(), 15);
     }
 
     @Test
-    public void testaddChocolate0() {
+    public void testAddChocolate0() {
         try {
             inv.addChocolate("0");
         } catch (InventoryException ex) {
@@ -56,7 +56,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddChocolate5() {
+    public void testAddChocolate5() {
         try {
             inv.addChocolate("5");
         } catch (InventoryException ex) {
@@ -66,7 +66,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddChocolateInvalid() {
+    public void testAddChocolateInvalid() {
         try {
             inv.addChocolate("abc");
         } catch (InventoryException ex) {
@@ -77,7 +77,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddChocolateInvalidNeg() {
+    public void testAddChocolateInvalidNeg() {
         try {
             inv.addChocolate("-10");
         } catch (InventoryException ex) {
@@ -88,7 +88,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddChocolate0Dec() {
+    public void testAddChocolate0Dec() {
         try {
             inv.addChocolate("0.0");
         } catch (InventoryException ex) {
@@ -104,19 +104,19 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testsetCoffee() {
+    public void testSetCoffee() {
         inv.setCoffee(10);
         assertEquals(inv.getCoffee(), 10);
     }
 
     @Test
-    public void testsetCoffeeNeg() {
+    public void testSetCoffeeNeg() {
         inv.setCoffee(-10);
         assertEquals(inv.getCoffee(), 15);
     }
 
     @Test
-    public void testaddCoffee0() {
+    public void testAddCoffee0() {
         try {
             inv.addCoffee("0");
         } catch (InventoryException ex) {
@@ -126,7 +126,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddCoffee5() {
+    public void testAddCoffee5() {
         try {
             inv.addCoffee("5");
         } catch (InventoryException ex) {
@@ -136,7 +136,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddCoffeeInvalid() {
+    public void testAddCoffeeInvalid() {
         try {
             inv.addCoffee("abc");
         } catch (InventoryException ex) {
@@ -147,7 +147,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddCoffeeInvalidNeg() {
+    public void testAddCoffeeInvalidNeg() {
         try {
             inv.addCoffee("-10");
         } catch (InventoryException ex) {
@@ -158,7 +158,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddCoffee0Dec() {
+    public void testAddCoffee0Dec() {
         try {
             inv.addCoffee("0.0");
         } catch (InventoryException ex) {
@@ -174,19 +174,19 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testsetSugar() {
+    public void testSetSugar() {
         inv.setSugar(10);
         assertEquals(inv.getSugar(), 10);
     }
 
     @Test
-    public void testsetSugarNeg() {
+    public void testSetSugarNeg() {
         inv.setSugar(-10);
         assertEquals(inv.getSugar(), 15);
     }
 
     @Test
-    public void testaddSugar0() {
+    public void testAddSugar0() {
         try {
             inv.addSugar("0");
         } catch (InventoryException ex) {
@@ -196,7 +196,7 @@ public class InventoryTest extends TestCase{
     }
 
         @Test
-    public void testaddSugar5() {
+    public void testAddSugar5() {
         try {
             inv.addSugar("5");
         } catch (InventoryException ex) {
@@ -206,7 +206,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddSugarInvalid() {
+    public void testAddSugarInvalid() {
         try {
             inv.addSugar("abc");
         } catch (InventoryException ex) {
@@ -217,7 +217,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddSugarInvalidNeg() {
+    public void testAddSugarInvalidNeg() {
         try {
             inv.addSugar("-10");
         } catch (InventoryException ex) {
@@ -228,7 +228,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddSugar0Dec() {
+    public void testAddSugar0Dec() {
         try {
             inv.addSugar("0.0");
         } catch (InventoryException ex) {
@@ -244,19 +244,19 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testsetMilk() {
+    public void testSetMilk() {
         inv.setMilk(10);
         assertEquals(inv.getMilk(), 10);
     }
 
     @Test
-    public void testsetMilkNeg() {
+    public void testSetMilkNeg() {
         inv.setMilk(-10);
         assertEquals(inv.getMilk(), 15);
     }
 
     @Test
-    public void testaddMilk0() {
+    public void testAddMilk0() {
         try {
             inv.addMilk("0");
         } catch (InventoryException ex) {
@@ -266,7 +266,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddMilk5() {
+    public void testAddMilk5() {
         try {
             inv.addMilk("5");
         } catch (InventoryException ex) {
@@ -276,7 +276,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddMilk0Dec() {
+    public void testAddMilk0Dec() {
         try {
             inv.addMilk("0.0");
         } catch (InventoryException ex) {
@@ -287,7 +287,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddMilkInvalid() {
+    public void testAddMilkInvalid() {
         try {
             inv.addMilk("abc");
         } catch (InventoryException ex) {
@@ -298,7 +298,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testaddMilkInvalidNeg() {
+    public void testAddMilkInvalidNeg() {
         try {
             inv.addMilk("-10");
         } catch (InventoryException ex) {
@@ -309,12 +309,12 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testenoughIngredientsYes() {
+    public void testEnoughIngredientsYes() {
         assertTrue(inv.enoughIngredients(r));
     }
 
     @Test
-    public void testenoughIngredientsChocolateYes() {
+    public void testEnoughIngredientsChocolateYes() {
         try {
             r.setAmtChocolate("15");
         } catch (RecipeException ex) {
@@ -324,7 +324,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testenoughIngredientsCoffeeYes() {
+    public void testEnoughIngredientsCoffeeYes() {
         try {
             r.setAmtCoffee("15");
         } catch (RecipeException ex) {
@@ -334,7 +334,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testenoughIngredientsSugarYes() {
+    public void testEnoughIngredientsSugarYes() {
         try {
             r.setAmtSugar("15");
         } catch (RecipeException ex) {
@@ -344,7 +344,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testenoughIngredientsMilkYes() {
+    public void testEnoughIngredientsMilkYes() {
         try {
             r.setAmtMilk("15");
         } catch (RecipeException ex) {
@@ -354,7 +354,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testenoughIngredientsChocolateNo() {
+    public void testEnoughIngredientsChocolateNo() {
         try {
             r.setAmtChocolate("16");
         } catch (RecipeException ex) {
@@ -364,7 +364,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testenoughIngredientsCoffeeNo() {
+    public void testEnoughIngredientsCoffeeNo() {
         try {
             r.setAmtCoffee("16");
         } catch (RecipeException ex) {
@@ -374,7 +374,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testenoughIngredientsSugarNo() {
+    public void testEnoughIngredientsSugarNo() {
         try {
             r.setAmtSugar("16");
         } catch (RecipeException ex) {
@@ -384,7 +384,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testenoughIngredientsMilkNo() {
+    public void testEnoughIngredientsMilkNo() {
         try {
             r.setAmtMilk("16");
         } catch (RecipeException ex) {
@@ -394,12 +394,12 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testuseIngredientsPass() {
+    public void testUseIngredientsPass() {
         assertTrue(inv.useIngredients(r));
     }
 
     @Test
-    public void testuseIngredientsFail() {
+    public void testUseIngredientsFail() {
         try {
             r.setAmtCoffee("20");
         } catch (RecipeException ex) {
@@ -409,7 +409,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testuseIngredientsCoffeeAmt() {
+    public void testUseIngredientsCoffeeAmt() {
         try {
             r.setAmtCoffee("5");
         } catch (RecipeException ex) {
@@ -420,7 +420,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testuseIngredientsMilkAmt() {
+    public void testUseIngredientsMilkAmt() {
         try {
             r.setAmtMilk("5");
         } catch (RecipeException ex) {
@@ -431,7 +431,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testuseIngredientsSugarAmt() {
+    public void testUseIngredientsSugarAmt() {
         try {
             r.setAmtSugar("5");
         } catch (RecipeException ex) {
@@ -442,7 +442,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testuseIngredientsChocolateAmt() {
+    public void testUseIngredientsChocolateAmt() {
         try {
             r.setAmtChocolate("5");
         } catch (RecipeException ex) {
@@ -453,7 +453,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testuseIngredientsCoffeePass() {
+    public void testUseIngredientsCoffeePass() {
         try {
             r.setAmtCoffee("5");
         } catch (RecipeException ex) {
@@ -463,7 +463,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testuseIngredientsMilkPass() {
+    public void testUseIngredientsMilkPass() {
         try {
             r.setAmtMilk("5");
         } catch (RecipeException ex) {
@@ -473,7 +473,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testuseIngredientsSugarPass() {
+    public void testUseIngredientsSugarPass() {
         try {
             r.setAmtSugar("5");
         } catch (RecipeException ex) {
@@ -483,7 +483,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testuseIngredientsChocolatePass() {
+    public void testUseIngredientsChocolatePass() {
         try {
             r.setAmtChocolate("5");
         } catch (RecipeException ex) {
@@ -493,7 +493,7 @@ public class InventoryTest extends TestCase{
     }
 
     @Test
-    public void testtoString() {
+    public void testToString() {
         assertEquals(inv.toString(), "Coffee: 15\nMilk: 15\nSugar: 15\nChocolate: 15\n");
     }
 }
