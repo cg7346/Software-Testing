@@ -9,4 +9,5 @@ pom.xml
 /.idea/
 /target/
 /CoffeeMaker_SWEN352.iml
-/JUnit.iml
+/out/
+JUnit.iml

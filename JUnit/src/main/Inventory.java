@@ -1,6 +1,6 @@
-package coffeemaker;
+package main;
 
-import coffeemaker.exceptions.InventoryException;
+import main.exceptions.InventoryException;
 
 /**
  * @author Sarah Heckman

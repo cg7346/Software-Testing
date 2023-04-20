@@ -2,3 +2,4 @@
 virtualenv
 .idea
 .coverage
+*.iml

@@ -1,6 +1,6 @@
-package coffeemaker;
+package main;
 
-import coffeemaker.exceptions.RecipeException;
+import main.exceptions.RecipeException;
 
 /**
  * @author   Sarah Heckman

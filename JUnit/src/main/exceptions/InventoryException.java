@@ -1,4 +1,4 @@
-package coffeemaker.exceptions;
+package main.exceptions;
 
 public class InventoryException extends Exception {
 

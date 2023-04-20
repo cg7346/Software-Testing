@@ -10,7 +10,7 @@ This assignment must be done by the teams identified in class, however, cross-te
 [**UnitTestingActivity #1.pptx**](https://docs.google.com/presentation/d/1qzLn5QmPXZHZePRxE3wTYd9PE8_XsTcY/edit?usp=sharing&ouid=116378854559746767728&rtpof=true&sd=true)
 
 **Objective:
-**Learn how to use:Create unit tests and fix defects. Use JUnit for unit level testing to confirm defects are fixedUse [EclEmma](https://www.eclemma.org/) to measure the coverage of Unit Testing
+**Learn how to use:Create unit test and fix defects. Use JUnit for unit level testing to confirm defects are fixedUse [EclEmma](https://www.eclemma.org/) to measure the coverage of Unit Testing
 
 **Assignments/Dropbox Instructions:**
 - Label all filenames by Team number and activity number- Example: Activity #1 – Team 1
@@ -30,14 +30,14 @@ This assignment must be done by the teams identified in class, however, cross-te
 
 - For additional help with setting up Junit:
 	
-	- https://www.guru99.com/download-installation-junit.htmlhttps://stackoverflow.com/questions/10773979/junit-tests-not-running-in-eclipseDownload 
+	- https://www.guru99.com/download-installation-junit.htmlhttps://stackoverflow.com/questions/10773979/junit-test-not-running-in-eclipseDownload 
 	
 - CoffeeMaker_SWEN352.zip from myCourses (Content > Activities > Activity 1)
 
 - open it in Eclipse (File -> Open Projects From File System… -> Archive):![img](https://lh4.googleusercontent.com/4reByPzX9AghSRk7afEExeTP5WqzpfQYSyqq3VDh9MEC0U1XYQ858V3mrkh9qLad0kbzwK2FATfIpqTr8a-NV6-sb-R9JKFCcfSGyfUvqCYuD4Q0B03pfBX8gc0ZvwCtYMf9mMDZ3yy-z4mNz-MaFwA)
   **Example Unit Test with Output of Eclemma**![img](https://lh6.googleusercontent.com/WkOwQdUohejSViI-Rv5ML5VZrHtaOodiefcfkQjFetcIcSkO7p8LyauOiBqBYpIlEEW5Lx3yhyN08Mn0xuNp9diSvTfUKMA6wFTW6OUBaWZ1GRreD-hOkBCcNRQGb3ESjPwEeasWHLjrWECbekE1_2M)![img](https://lh3.googleusercontent.com/2mR2zoBoU-ZAR7K5qfIn4WiFtnkDgsBIiHhgYzmN2wInNP6vylK7O5icStnQWeIRTojhTDGMs094Og7W8B4Or1DtptHHewnOnYi_mMjTZvGXWGXnzxPZtRAmms8Qd7SAuyYKM7XWsIePt1vQSU4XhDw)
   **Create a JUnit Test Case Classes:**
-  Follow the instructions in the [Unit Testing in Eclipse using JUnit](https://courses.cs.washington.edu/courses/cse143/11wi/eclipse-tutorial/junit.shtml) tutorialRead through the tutorial to learn about creating unit tests with JUnit using EclipseJunit 5 is recommended, but Junit 3 or 4 is fine as well.
+  Follow the instructions in the [Unit Testing in Eclipse using JUnit](https://courses.cs.washington.edu/courses/cse143/11wi/eclipse-tutorial/junit.shtml) tutorialRead through the tutorial to learn about creating unit test with JUnit using EclipseJunit 5 is recommended, but Junit 3 or 4 is fine as well.
 
 ### **STEP 1 - Take a screen snapshot of Project Explorer showing all 4 test classes under unittests**(empty test classes) – 5%
 - **Test class for the Inventory class**
@@ -51,7 +51,7 @@ This assignment must be done by the teams identified in class, however, cross-te
 - Hint: focus on the source code files, not the test ones
 ### **STEP #3 -** **Find, fix and submit any 4 defects in project CoffeeMaker - 20%****
 - 5% per defect
-- Strong Recommendation - Perform boundary tests around the acceptable inputs to get the one **[Assert](https://junit.org/junit4/javadoc/4.12/org/junit/Assert.html) per Unit Test**
+- Strong Recommendation - Perform boundary test around the acceptable inputs to get the one **[Assert](https://junit.org/junit4/javadoc/4.12/org/junit/Assert.html) per Unit Test**
 - Only defects found in the three classes we are testing will count towards the 4 required defects
 	- **Inventory.java**
 	- **RecipeBook.java** 
@@ -91,7 +91,7 @@ A 1-2 sentence explaining why it is a defect:
 **A screenshot of the unit test passing again**
 ![img](https://lh5.googleusercontent.com/JnIMB_V0vfoq5SsawLkpDwOMBuvWSZU3ZRR8iqYhJuFiohuUz2RkHu_BLdq7p3nII2ikFhE8tiAe4aN9pWDv7DnUqunBvpgVp1rX2jc2kif5qi3uRhuHdlccEqcM6wwRMWAw0FJkW7kyLtueCLrpqrs)
 
-### **STEP 4 - Write unit tests with a goal of 100% code coverage for all three classes source files. Full credit if you get 95% or better (no partial credit). Provide a screenshot showing the coverage using EclEmma (similar to the example below) – 30%
+### **STEP 4 - Write unit test with a goal of 100% code coverage for all three classes source files. Full credit if you get 95% or better (no partial credit). Provide a screenshot showing the coverage using EclEmma (similar to the example below) – 30%
 
 **Inventory.java - 15%
 RecipeBook.java - 5%
@@ -99,7 +99,7 @@ Recipe.java - 10%**
 
 **![img](https://lh6.googleusercontent.com/Ys4X26fh7kcx-Y9jXcrtMFi87T8a3WiKWc_qeUaxaLPT3XM4JAak-20QBEHI6fShnDJUuQLfuufXHofu7VBKHmJtCnt_Dcjn6LAcValTFqIashtdy9pzuWLMW6bj2voCsDm4bY1GsGGTdh0uEBVPYKs)**
 
-### **STEP 5 - Provide** **three** **screenshots (one for each class) showing the number of unit tests executed in the expanded view for each test file’s count (make sure you include the Eclipse method count in the screenshot) - 30%**
+### **STEP 5 - Provide** **three** **screenshots (one for each class) showing the number of unit test executed in the expanded view for each test file’s count (make sure you include the Eclipse method count in the screenshot) - 30%**
 
 **Grading will be as follows per class****:
 ** **Inventory - 15%:**

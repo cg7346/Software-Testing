@@ -1,16 +1,12 @@
-package tests;
-
-import static org.junit.Assert.*;
+package test;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import junit.framework.TestCase;
 
-import coffeemaker.*;
-import coffeemaker.exceptions.*;
-
-import java.lang.reflect.Array;
+import main.*;
+import main.exceptions.*;
 
 public class RecipeBookTest extends TestCase {
     private RecipeBook book;

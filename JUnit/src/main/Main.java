@@ -1,11 +1,11 @@
-package coffeemaker;
+package main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import coffeemaker.exceptions.InventoryException;
-import coffeemaker.exceptions.RecipeException;
+import main.exceptions.InventoryException;
+import main.exceptions.RecipeException;
 
 
 /**

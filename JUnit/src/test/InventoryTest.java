@@ -1,24 +1,25 @@
-package tests;
-
-import static org.junit.Assert.*;
+package test;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import junit.framework.TestCase;
 
-import coffeemaker.*;
-import coffeemaker.exceptions.*;
+import main.*;
+import main.exceptions.*;
 
 public class InventoryTest extends TestCase{
     private Inventory inv;
     private Recipe r;
+
+    private static String inventoryString;
 
     @Before
 	public void setUp() throws Exception {
         inv = new Inventory();
         r = new Recipe();
         super.setUp();
+        inventoryString = inv.toString();
 	}
 
 	@After
@@ -494,6 +495,6 @@ public class InventoryTest extends TestCase{
 
     @Test
     public void testToString() {
-        assertEquals(inv.toString(), "Coffee: 15\nMilk: 15\nSugar: 15\nChocolate: 15\n");
+        assertEquals(inventoryString, "Coffee: 15\nMilk: 15\nSugar: 15\nChocolate: 15\n");
     }
 }

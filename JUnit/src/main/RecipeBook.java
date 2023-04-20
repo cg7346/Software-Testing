@@ -1,4 +1,4 @@
-package coffeemaker;
+package main;
 
 public class RecipeBook {
 	
