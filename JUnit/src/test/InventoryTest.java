@@ -48,11 +48,7 @@ public class InventoryTest extends TestCase{
 
     @Test
     public void testAddChocolate0() {
-        try {
-            inv.addChocolate("0");
-        } catch (InventoryException ex) {
-            fail("Should parse int");
-        };
+        inv.addChocolate("0");
         assertEquals(inv.getChocolate(), 15);
     }
 
