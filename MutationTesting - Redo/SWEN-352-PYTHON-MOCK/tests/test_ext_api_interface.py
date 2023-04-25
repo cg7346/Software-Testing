@@ -52,6 +52,13 @@ class TestExtApiInterface(unittest.TestCase):
         self.api.make_request = Mock(return_value=[])
         self.assertEqual(self.api.get_ebooks(self.book), [])
 
+    def test_is_book_available_URL_bad(self):
+        try:
+            self.api.is_book_available('learning python')
+            self.assertTrue(True)
+        except:
+            self.assertTrue(False)
+
     def test_is_book_available_true(self):
         self.api.make_request = Mock(return_value=self.json_data)
         self.assertTrue(self.api.is_book_available('learning python'))
