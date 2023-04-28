@@ -54,9 +54,12 @@ class TestLibrary(unittest.TestCase):
     ################################# DB METHODS ###############################
     ############################################################################
 
-    #def test_register_patron(self):
-    #    self.lib.db.insert_patron = Mock(return_value='2')
-    #    self.assertEqual(self.lib.register_patron('john', 'doe', '20', '2'), '2')
+    #def test_register_patron_db(self):
+    #    try:
+    #        self.lib.register_patron('john', 'doe', '20', '2')
+    #        self.assertTrue(True)
+    #    except:
+    #        self.assertTrue(False)
 
     #def test_is_patron_registered_true(self):
     #    self.assertTrue(self.lib.is_patron_registered(self.pat_1))

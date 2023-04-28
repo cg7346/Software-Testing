@@ -11,8 +11,11 @@ class TestPatron(unittest.TestCase):
         pat = patron.Patron('fname', 'lname', '20', '1234')
         self.assertTrue(isinstance(pat, patron.Patron))
 
-    def test_invalid_name(self):
-        self.assertRaises(patron.InvalidNameException, patron.Patron, '1fname', '1lname', '20', '1234')
+    def test_invalid_first_name(self):
+        self.assertRaises(patron.InvalidNameException, patron.Patron, '1fname', 'lname', '20', '1234')
+    
+    def test_invalid_last_name(self):
+        self.assertRaises(patron.InvalidNameException, patron.Patron, 'fname', '1lname', '20', '1234')
         
     def test_add_borrowed_book_not_present(self):
         self.pat.add_borrowed_book("where the wild things are")

@@ -30,6 +30,34 @@ class TestExtApiInterface(unittest.TestCase):
         attr = {'json.return_value': dict()}
         requests.get = Mock(return_value=Mock(status_code=200, **attr))
         self.assertEqual(self.api.make_request(""), dict())
+    
+    def test_is_book_available_URL_bad(self):
+        try:
+            self.api.is_book_available('learning python')
+            self.assertTrue(True)
+        except:
+            self.assertTrue(False)
+    
+    def test_books_by_author_URL_bad(self):
+        try:
+            self.api.books_by_author(self.author)
+            self.assertTrue(True)
+        except:
+            self.assertTrue(False)
+
+    def test_get_book_info_URL_bad(self):
+        try:
+            self.api.get_book_info(self.book)
+            self.assertTrue(True)
+        except:
+            self.assertTrue(False)
+    
+    def test_get_ebooks_URL_bad(self):
+        try:
+            self.api.get_ebooks(self.book)
+            self.assertTrue(True)
+        except:
+            self.assertTrue(False)
 
     def test_make_request_connection_error(self):
         ext_api_interface.requests.get = Mock(side_effect=requests.ConnectionError)
@@ -75,3 +103,7 @@ class TestExtApiInterface(unittest.TestCase):
     def test_get_book_info_none(self):
         self.api.make_request = Mock(return_value=[])
         self.assertEqual(self.api.get_book_info(self.book), [])
+    
+    def test_is_book_available_json_len_1(self):
+        self.api.make_request = Mock(return_value={"docs": ["one"]})
+        self.assertTrue(self.api.is_book_available("learning python"))
