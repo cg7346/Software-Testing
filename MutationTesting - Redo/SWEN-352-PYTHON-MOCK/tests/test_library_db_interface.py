@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import Mock
 from library import library_db_interface
+from library import patron
 from tinydb import TinyDB, Query
 
 
@@ -37,6 +38,10 @@ class TestLibraryDBInterface(unittest.TestCase):
         self.db_interface.convert_patron_to_db_format = Mock(return_value=data)
         self.db_interface.retrieve_patron = Mock(return_value=data)
         self.assertEqual(self.db_interface.insert_patron(patron_mock), None)
+    
+    #def test_insert_patron_in_db_real(self):
+    #    patron_obj = patron.Patron("fname", "lname", 23, 32)
+    #    self.assertEqual(self.db_interface.insert_patron(patron_obj), 32)
 
     def test_get_patron_count(self):
         self.db_interface.db.all = Mock(return_value=[])
@@ -80,9 +85,22 @@ class TestLibraryDBInterface(unittest.TestCase):
                 'borrowed_books': []}
         self.db_interface.convert_patron_to_db_format = Mock(return_value=data)
         self.assertEqual(self.db_interface.retrieve_patron(patron_mock), None)
+
+    def test_retrieve_patron(self):
+        try:
+            patron_mock = Mock()
+            data = [{'fname': 'name', 'lname': 'name', 'age': 'age', 'memberID': 'memberID',
+                    'borrowed_books': []}]
+            self.db_interface.db.search = Mock(return_value=data)
+            self.assertEqual(self.db_interface.retrieve_patron(patron_mock).get_fname(), "name")
+        except:
+            assertTrue(False)
     
     def test_get_all_patrons(self):
         data = {'fname': 'name', 'lname': 'name', 'age': 'age', 'memberID': 'memberID',
                 'borrowed_books': []}
         self.db_interface.db.all = Mock(return_value=[data])
         self.assertEqual(self.db_interface.get_all_patrons(), [data])
+
+    def test_database(self):
+        self.assertEqual(len(self.db_interface.get_all_patrons()), 31)

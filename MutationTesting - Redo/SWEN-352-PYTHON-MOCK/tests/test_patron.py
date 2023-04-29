@@ -16,6 +16,9 @@ class TestPatron(unittest.TestCase):
     
     def test_invalid_last_name(self):
         self.assertRaises(patron.InvalidNameException, patron.Patron, 'fname', '1lname', '20', '1234')
+    
+    def test_err_msg(self):
+        
         
     def test_add_borrowed_book_not_present(self):
         self.pat.add_borrowed_book("where the wild things are")
